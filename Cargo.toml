@@ -12,30 +12,6 @@ repository = "https://github.com/david-wallace-croft/book-async-rust"
 rust-version = "1.86.0"
 version = "0.0.0-SNAPSHOT"
 
-[[bin]]
-name = "ch01-connection"
-
-[[bin]]
-name = "ch01-fibonacci"
-
-[[bin]]
-name = "ch01-fibonacci-one"
-
-[[bin]]
-name = "ch01-fibonacci-four"
-
-[[bin]]
-name = "ch01-http-one"
-
-[[bin]]
-name = "ch01-http-four"
-
-[[bin]]
-name = "ch01-server"
-
-[[bin]]
-name = "ch01-server-four"
-
 [dependencies]
 reqwest = "0.12.15"
 tokio = { version = "1.44.2", features = ["full"] }

@@ -23,6 +23,7 @@
 - cargo run --bin ch01-server-four
 - cargo run --bin ch01-fibonacci-one
 - cargo run --bin ch01-fibonacci-four
+- cargo run --bin condvar
 
 ## History
 
