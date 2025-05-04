@@ -9,8 +9,13 @@
 
 ## Usage
 
-- cargo run --bin ch01-connection
+### Chapter 1
+
 - cargo run --bin ch01-fibonacci
+- cargo run --bin ch01-http-one
+- cargo run --bin ch01-http-four
+- cargo run --bin ch01-http-four-join
+- cargo run --bin ch01-connection
 - cargo run --bin ch01-server
 
 ## History

@@ -1,4 +1,4 @@
-use ::book_async_rust::ch01::fibonacci;
+use ::book_async_rust::ch01;
 use ::std::thread::{self, JoinHandle};
 
 fn main() {
@@ -6,7 +6,7 @@ fn main() {
 
   for i in 0..8 {
     let handle: JoinHandle<()> = thread::spawn(move || {
-      let result: u64 = fibonacci::fibonacci(40);
+      let result: u64 = ch01::fibonacci(40);
 
       println!("Thread {i} result: {result}");
     });
