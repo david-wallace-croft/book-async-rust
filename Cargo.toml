@@ -19,6 +19,9 @@ name = "ch01-connection"
 name = "ch01-fibonacci"
 
 [[bin]]
+name = "ch01-fibonacci-one"
+
+[[bin]]
 name = "ch01-http-one"
 
 [[bin]]
