@@ -2,13 +2,13 @@ use ::book_async_rust::ch01;
 use ::std::time::{Duration, Instant};
 
 fn main() {
-  let start_time: Instant = Instant::now();
+  let start: Instant = Instant::now();
 
   let _result: u64 = ch01::fibonacci(50);
 
-  let elapsed_time: Duration = start_time.elapsed();
+  let duration: Duration = start.elapsed();
 
-  // Prints "Request took 93303 ms"
+  // Prints "fibonacci(50) in 95.5378462s"
 
-  println!("Request took {} ms", elapsed_time.as_millis());
+  println!("fibonacci(50) in {:?}", duration);
 }

@@ -21,6 +21,8 @@
 - scripts/ch01-run.sh
 - scripts/ch01-time.sh
 - cargo run --bin ch01-server-four
+- cargo run --bin ch01-fibonacci-one
+- cargo run --bin ch01-fibonacci-four
 
 ## History
 
