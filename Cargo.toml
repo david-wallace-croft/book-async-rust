@@ -13,3 +13,5 @@ rust-version = "1.86.0"
 version = "0.0.0-SNAPSHOT"
 
 [dependencies]
+reqwest = "0.12.15"
+tokio = { version = "1.44.2", features = ["full"] }
