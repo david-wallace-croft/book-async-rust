@@ -20,10 +20,9 @@ async fn calculate_last_login() {
 async fn fetch_data(seconds: u64) -> Result<Response, Error> {
   let request_url: String = format!("https://httpbin.org/delay/{}", seconds);
 
-  let response: Result<reqwest::Response, Error> =
-    reqwest::get(&request_url).await;
+  let response: reqwest::Response = reqwest::get(&request_url).await?;
 
-  let delayed_response: Response = response?.json().await?;
+  let delayed_response: Response = response.json().await?;
 
   Ok(delayed_response)
 }
