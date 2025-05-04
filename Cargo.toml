@@ -3,7 +3,6 @@ authors = ["David Wallace Croft <david@CroftSoft.com>"]
 description = "Code adapted from the book 'Async Rust' by Flitton & Morton"
 edition = "2024"
 homepage = "https://www.CroftSoft.com/"
-keywords = ["dioxus"]
 license = "MIT"
 name = "book-async-rust"
 publish = false
