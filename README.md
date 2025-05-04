@@ -7,6 +7,12 @@
 
 - Code adapted from the book "Async Rust" by Flitton & Morton
 
+## Usage
+
+- cargo run --bin ch01-connection
+- cargo run --bin ch01-fibonacci
+- cargo run --bin ch01-server
+
 ## History
 
 - 2025-05-04: Initial release
