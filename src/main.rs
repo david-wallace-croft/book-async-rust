@@ -1,3 +1,5 @@
+use ::book_async_rust::ch01;
+
 fn main() {
-    println!("Hello, world!");
+  ch01::fibonacci::run();
 }
