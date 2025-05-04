@@ -6,6 +6,9 @@
 [mit-url]: https://github.com/david-wallace-croft/book-async-rust/blob/main/LICENSE.txt
 
 - Code adapted from the book "Async Rust" by Flitton & Morton
+  - https://www.oreilly.com/library/view/async-rust/9781098149086/
+  - https://github.com/maxwellflitton/async-rust-oreilly
+  - https://www.oreilly.com/catalog/errata.csp?isbn=9781098149093
 
 ## Usage
 
@@ -26,6 +29,7 @@
 - cargo run --bin ch01-condvar
 - touch data.txt
 - cargo run --bin ch01-file
+- cargo run --bin ch01-http-async
 
 ## History
 

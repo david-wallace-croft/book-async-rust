@@ -61,6 +61,8 @@ name = "book-async-rust"
 version = "0.0.0-SNAPSHOT"
 dependencies = [
  "reqwest",
+ "serde",
+ "serde_json",
  "tokio",
 ]
 
