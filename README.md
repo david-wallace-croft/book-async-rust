@@ -23,7 +23,9 @@
 - cargo run --bin ch01-server-four
 - cargo run --bin ch01-fibonacci-one
 - cargo run --bin ch01-fibonacci-four
-- cargo run --bin condvar
+- cargo run --bin ch01-condvar
+- touch data.txt
+- cargo run --bin ch01-file
 
 ## History
 
