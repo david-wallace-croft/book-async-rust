@@ -2,7 +2,7 @@ use ::std::borrow::Cow;
 use ::std::process::{Command, Output};
 
 fn main() {
-  let output: Output = Command::new("./target/debug/ch01-connection.exe")
+  let output: Output = Command::new("./ch01-connection")
     .output()
     .expect("Failed to execute command");
 

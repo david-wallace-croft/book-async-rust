@@ -17,6 +17,10 @@
 - cargo run --bin ch01-http-four-join
 - cargo run --bin ch01-connection
 - cargo run --bin ch01-server
+- scripts/ch01-prep.sh
+- scripts/ch01-run.sh
+- scripts/ch01-time.sh
+- cargo run --bin ch01-server-four
 
 ## History
 

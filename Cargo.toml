@@ -27,6 +27,9 @@ name = "ch01-http-four"
 [[bin]]
 name = "ch01-server"
 
+[[bin]]
+name = "ch01-server-four"
+
 [dependencies]
 reqwest = "0.12.15"
 tokio = { version = "1.44.2", features = ["full"] }
