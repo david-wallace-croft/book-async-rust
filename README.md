@@ -36,6 +36,7 @@
 - cargo run --bin ch02-context
 - cargo run --bin ch02-waking
 - cargo run --bin ch02-sharing
+- cargo run --bin ch02-high-level
 
 ## History
 
