@@ -41,10 +41,10 @@ async fn main() {
   let counter_two: CounterFuture = Default::default();
 
   let handle_one: tokio::task::JoinHandle<u32> =
-    tokio::task::spawn(async move { counter_one.await });
+    tokio::task::spawn(counter_one);
 
   let handle_two: tokio::task::JoinHandle<u32> =
-    tokio::task::spawn(async move { counter_two.await });
+    tokio::task::spawn(counter_two);
 
   let _result: (
     Result<u32, tokio::task::JoinError>,

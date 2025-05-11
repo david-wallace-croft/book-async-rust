@@ -32,6 +32,7 @@
 - cargo run --bin ch01-http-async
 - cargo run --bin ch02-tasks
 - cargo run --bin ch02-futures
+- cargo run --bin ch02-pinning
 
 ## History
 
