@@ -34,6 +34,7 @@
 - cargo run --bin ch02-futures
 - cargo run --bin ch02-pinning
 - cargo run --bin ch02-context
+- cargo run --bin ch02-waking
 
 ## History
 
