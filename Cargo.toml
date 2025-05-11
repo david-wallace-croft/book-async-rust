@@ -12,6 +12,7 @@ rust-version = "1.86.0"
 version = "0.0.0-SNAPSHOT"
 
 [dependencies]
+futures-util = "0.3.31"
 reqwest = { version = "0.12.15", features = ["json"] }
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
