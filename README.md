@@ -30,6 +30,7 @@
 - touch data.txt
 - cargo run --bin ch01-file
 - cargo run --bin ch01-http-async
+- cargo run --bin ch02-tasks
 
 ## History
 
