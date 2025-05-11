@@ -33,6 +33,7 @@
 - cargo run --bin ch02-tasks
 - cargo run --bin ch02-futures
 - cargo run --bin ch02-pinning
+- cargo run --bin ch02-context
 
 ## History
 
