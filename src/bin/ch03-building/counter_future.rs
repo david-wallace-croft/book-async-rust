@@ -18,12 +18,17 @@ impl Future for CounterFuture {
   ) -> Poll<Self::Output> {
     self.count += 1;
 
-    println!("polling with result: {}", self.count);
+    println!("CounterFuture::poll() count: {}", self.count);
+
+    println!("Starting CounterFuture::poll() sleep...");
 
     std::thread::sleep(Duration::from_secs(1));
 
+    println!("Finished CounterFuture::poll() sleep.");
+
     if self.count < 3 {
       context.waker().wake_by_ref();
+
       return Poll::Pending;
     }
 
