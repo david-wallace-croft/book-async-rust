@@ -41,6 +41,7 @@
 - cargo run --bin ch03-increasing
 - cargo run --bin ch03-passing
 - cargo run --bin ch03-task
+- cargo run --bin ch03-refactoring
 
 ## History
 
