@@ -39,6 +39,7 @@
 - cargo run --bin ch02-high-level
 - cargo run --bin ch03-building
 - cargo run --bin ch03-increasing
+- cargo run --bin ch03-passing
 
 ## History
 
