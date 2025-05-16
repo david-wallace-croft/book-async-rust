@@ -43,6 +43,7 @@
 - cargo run --bin ch03-task
 - cargo run --bin ch03-refactoring
 - cargo run --bin ch03-creating
+- cargo run --bin ch03-configuring
 
 ## History
 
