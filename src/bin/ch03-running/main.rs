@@ -235,7 +235,7 @@ where
 
   let schedule_low = |runnable: Runnable| LOW_QUEUE.send(runnable).unwrap();
 
-  let schedule = match order {
+  let schedule: fn(Runnable) = match order {
     future_type::FutureType::High => schedule_high,
     future_type::FutureType::Low => schedule_low,
   };

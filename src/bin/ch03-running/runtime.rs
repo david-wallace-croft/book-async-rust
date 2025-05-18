@@ -12,7 +12,7 @@ pub struct Runtime {
 
 impl Runtime {
   pub fn new() -> Self {
-    let num_cores = thread::available_parallelism().unwrap().get();
+    let num_cores: usize = thread::available_parallelism().unwrap().get();
 
     Self {
       // TODO: Why does the book subtract 2 instead of 1?
