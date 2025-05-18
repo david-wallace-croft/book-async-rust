@@ -46,7 +46,7 @@ impl Future for MyFuture {
 
     state.waker = Some(context.waker().clone());
 
-    return Poll::Pending;
+    Poll::Pending
   }
 }
 

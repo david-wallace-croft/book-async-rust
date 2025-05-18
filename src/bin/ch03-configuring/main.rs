@@ -1,3 +1,4 @@
+#![expect(clippy::vec_init_then_push)]
 #![expect(unused_macros)]
 
 use self::counter_future::CounterFuture;
@@ -61,10 +62,10 @@ macro_rules! try_join {
 }
 
 static HIGH_CHANNEL: LazyLock<(Sender<Runnable>, Receiver<Runnable>)> =
-  LazyLock::new(|| unbounded::<Runnable>());
+  LazyLock::new(unbounded::<Runnable>);
 
 static LOW_CHANNEL: LazyLock<(Sender<Runnable>, Receiver<Runnable>)> =
-  LazyLock::new(|| unbounded::<Runnable>());
+  LazyLock::new(unbounded::<Runnable>);
 
 // Can we replace this with a new Rust feature?
 static HIGH_QUEUE: LazyLock<Sender<Runnable>> = LazyLock::new(|| {

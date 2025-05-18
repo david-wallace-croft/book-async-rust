@@ -16,10 +16,10 @@ mod future_order_label;
 mod future_type;
 
 static HIGH_CHANNEL: LazyLock<(Sender<Runnable>, Receiver<Runnable>)> =
-  LazyLock::new(|| unbounded::<Runnable>());
+  LazyLock::new(unbounded::<Runnable>);
 
 static LOW_CHANNEL: LazyLock<(Sender<Runnable>, Receiver<Runnable>)> =
-  LazyLock::new(|| unbounded::<Runnable>());
+  LazyLock::new(unbounded::<Runnable>);
 
 // Can we replace this with a new Rust feature?
 static HIGH_QUEUE: LazyLock<Sender<Runnable>> = LazyLock::new(|| {

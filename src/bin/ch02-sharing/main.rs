@@ -54,7 +54,7 @@ impl Future for CounterFuture {
         },
       };
 
-    let value: &mut SharedData = &mut *guard;
+    let value: &mut SharedData = &mut guard;
 
     match self.counter_type {
       CounterType::Decrement => {
