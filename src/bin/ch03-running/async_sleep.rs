@@ -27,7 +27,7 @@ impl Future for AsyncSleep {
     self: Pin<&mut Self>,
     context: &mut Context<'_>,
   ) -> Poll<Self::Output> {
-    let elapsed_time = self.start_time.elapsed();
+    let elapsed_time: Duration = self.start_time.elapsed();
 
     if elapsed_time >= self.duration {
       return Poll::Ready(true);
