@@ -46,6 +46,7 @@
 - cargo run --bin ch03-configuring
 - cargo run --bin ch03-running
 - cargo run --bin ch04-p073-integrating
+- cargo run --bin ch04-p074-building
 
 ## History
 
