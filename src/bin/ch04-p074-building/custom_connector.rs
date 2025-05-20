@@ -59,7 +59,7 @@ impl Service<Uri> for CustomConnector {
 
           Ok(CustomStream::Tls(stream))
         },
-        scheme => bail!("unsupported schedume: {:?}", scheme),
+        scheme => bail!("unsupported scheme: {:?}", scheme),
       }
     })
   }
