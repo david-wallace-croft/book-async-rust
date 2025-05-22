@@ -2,7 +2,7 @@
 
 use ::async_native_tls::TlsStream;
 use ::smol::Async;
-use ::smol::prelude::*;
+use ::smol::prelude::{AsyncRead, AsyncWrite};
 use ::std::io::Error;
 use ::std::net::Shutdown;
 use ::std::net::TcpStream;
