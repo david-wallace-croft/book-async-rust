@@ -10,11 +10,11 @@ use ::std::time::Duration;
 #[macro_export]
 macro_rules! spawn_task {
   ($future:expr) => {
-    spawn_task!($future, crate::future_type::FutureType::Low)
+    spawn_task!($future, $crate::future_type::FutureType::Low)
   };
 
   ($future:expr, $order:expr) => {
-    crate::queue::spawn_task($future, $order)
+    $crate::queue::spawn_task($future, $order)
   };
 }
 

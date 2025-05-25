@@ -20,7 +20,7 @@ impl Future for ServerFuture {
   ) -> Poll<Self::Output> {
     let mut events = Events::with_capacity(1);
 
-    let _ = self
+    self
       .mio_poll
       .poll(&mut events, Some(Duration::from_millis(200)))
       .unwrap();

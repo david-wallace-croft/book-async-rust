@@ -1,3 +1,5 @@
+#![allow(clippy::vec_init_then_push)]
+
 use self::constants::CLIENT;
 use self::constants::SERVER;
 use self::custom_connector::CustomConnector;
@@ -70,7 +72,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
   let mut events: Events = Events::with_capacity(128);
 
-  let _ = client_mio_poll.poll(&mut events, None).unwrap();
+  client_mio_poll.poll(&mut events, None).unwrap();
 
   for event in events.iter() {
     if event.token() == CLIENT && event.is_writable() {
@@ -88,11 +90,13 @@ fn main() -> Result<(), Box<dyn Error>> {
 }
 
 pub async fn fetch(req: Request<Body>) -> hyper::Result<Response<Body>> {
-  Ok(
-    Client::builder()
-      .executor(CustomExecutor)
-      .build::<_, Body>(CustomConnector)
-      .request(req)
-      .await?,
-  )
+  let client: Client<CustomConnector> = Client::builder()
+    .executor(CustomExecutor)
+    .build::<_, Body>(CustomConnector);
+
+  let response_future: hyper::client::ResponseFuture = client.request(req);
+
+  let response: Response<Body> = response_future.await?;
+
+  Ok(response)
 }

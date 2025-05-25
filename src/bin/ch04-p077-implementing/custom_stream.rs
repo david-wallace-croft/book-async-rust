@@ -9,6 +9,7 @@ use ::std::pin::Pin;
 use ::std::task::{Context, Poll};
 use ::tokio::io::ReadBuf;
 
+#[allow(clippy::large_enum_variant)]
 pub enum CustomStream {
   Plain(Async<TcpStream>),
   Tls(TlsStream<Async<TcpStream>>),
