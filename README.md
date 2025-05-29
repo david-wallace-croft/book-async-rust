@@ -51,6 +51,7 @@
 - cargo run --bin ch04-p082-introducing
 - cargo run --bin ch05-p091-why
 - cargo run --bin ch05-p095-implementing
+- cargo run --bin ch05-p096-stacking
 
 ## History
 
