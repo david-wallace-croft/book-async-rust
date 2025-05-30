@@ -52,6 +52,7 @@
 - cargo run --bin ch05-p091-why
 - cargo run --bin ch05-p095-implementing
 - cargo run --bin ch05-p096-stacking
+- cargo run --bin ch05-p098-calling
 
 ## History
 
