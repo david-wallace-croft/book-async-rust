@@ -21,5 +21,5 @@ fn main() {
 
   // Prints "4 threads fibonacci(50) took 115.0048591s"
 
-  println!("4 threads fibonacci(50) took {:?}", duration);
+  println!("4 threads fibonacci(50) took {duration:?}");
 }

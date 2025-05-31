@@ -46,7 +46,7 @@ impl Future for AsyncWriteFuture {
 
     match guard.write_all(buf) {
       Ok(_) => println!("written for: {}", self.entry),
-      Err(e) => println!("{}", e),
+      Err(e) => println!("{e}"),
     }
 
     Poll::Ready(Ok(true))

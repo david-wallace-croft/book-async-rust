@@ -22,7 +22,7 @@ async fn main() {
           Ok(output.status.code().unwrap_or(-1))
         },
         Err(e) => {
-          eprintln!("Failed to run process: {}", e);
+          eprintln!("Failed to run process: {e}");
 
           Err(e)
         },

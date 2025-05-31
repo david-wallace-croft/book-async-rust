@@ -27,7 +27,7 @@ impl Coroutine<i32> for WriteCoroutine {
     mut self: Pin<&mut Self>,
     arg: i32,
   ) -> CoroutineState<Self::Yield, Self::Return> {
-    writeln!(self.file_handle, "{}", arg).unwrap();
+    writeln!(self.file_handle, "{arg}").unwrap();
 
     CoroutineState::Yielded(())
   }

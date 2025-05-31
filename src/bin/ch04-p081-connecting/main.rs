@@ -45,7 +45,7 @@ fn main() {
 
     let html: String = String::from_utf8(body_bytes.to_vec()).unwrap();
 
-    println!("{}", html);
+    println!("{html}");
   };
 
   let test: smol::Task<()> = spawn_task!(future);

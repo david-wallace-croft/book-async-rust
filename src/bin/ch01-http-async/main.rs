@@ -18,7 +18,7 @@ async fn calculate_last_login() {
 }
 
 async fn fetch_data(seconds: u64) -> Result<Response, Error> {
-  let request_url: String = format!("https://httpbin.org/delay/{}", seconds);
+  let request_url: String = format!("https://httpbin.org/delay/{seconds}");
 
   let response: reqwest::Response = reqwest::get(&request_url).await?;
 
@@ -39,9 +39,9 @@ async fn main() -> Result<(), Error> {
 
   let duration: Duration = start_time.elapsed();
 
-  println!("Fetched {:?}", posts);
+  println!("Fetched {posts:?}");
 
-  println!("Time taken: {:?}", duration);
+  println!("Time taken: {duration:?}");
 
   Ok(())
 }

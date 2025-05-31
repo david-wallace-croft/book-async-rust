@@ -9,7 +9,7 @@ async fn main() {
     timeout(duration, slow_task()).await;
 
   match result {
-    Ok(value) => println!("Task completed successfully: {}", value),
+    Ok(value) => println!("Task completed successfully: {value}"),
     Err(_) => println!("Task timed out"),
   }
 }

@@ -2,9 +2,12 @@
 #![feature(coroutines)]
 
 use self::rand_co_routine::RandCoRoutine;
-use std::ops::CoroutineState;
-use std::{ops::Coroutine, pin::Pin};
+use std::{
+  ops::{Coroutine, CoroutineState},
+  pin::Pin,
+};
 
+mod nesting_future;
 mod rand_co_routine;
 
 fn main() {

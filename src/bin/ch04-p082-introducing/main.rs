@@ -84,7 +84,7 @@ fn main() -> Result<(), Box<dyn Error>> {
 
   let outcome: String = future::block_on(test);
 
-  println!("outcome: {}", outcome);
+  println!("outcome: {outcome}");
 
   Ok(())
 }

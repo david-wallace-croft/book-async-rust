@@ -9,10 +9,10 @@ fn main() {
   if output.status.success() {
     let stdout: Cow<'_, str> = String::from_utf8_lossy(&output.stdout);
 
-    println!("Output: {}", stdout);
+    println!("Output: {stdout}");
   } else {
     let stderr: Cow<'_, str> = String::from_utf8_lossy(&output.stderr);
 
-    eprintln!("Error: {}", stderr);
+    eprintln!("Error: {stderr}");
   }
 }

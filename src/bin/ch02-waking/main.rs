@@ -82,7 +82,7 @@ async fn main() {
 
   let outcome: String = task_handle.await.unwrap();
 
-  println!("Task completed with outcome: {}", outcome);
+  println!("Task completed with outcome: {outcome}");
 
   trigger_task.await.unwrap();
 }

@@ -20,13 +20,13 @@ fn main() -> io::Result<()> {
 
   for &number in &numbers {
     if let Err(e) = append_number_to_file(number) {
-      eprintln!("Failed to write to file: {}", e);
+      eprintln!("Failed to write to file: {e}");
     }
   }
 
   let duration = start.elapsed();
 
-  println!("Time elapsed in file operations is: {:?}", duration);
+  println!("Time elapsed in file operations is: {duration:?}");
 
   let mut coroutine: WriteCoroutine = WriteCoroutine::new("numbers.txt")?;
 
@@ -38,7 +38,7 @@ fn main() -> io::Result<()> {
 
   let duration = start.elapsed();
 
-  println!("Time elapsed in file operations is: {:?}", duration);
+  println!("Time elapsed in file operations is: {duration:?}");
 
   Ok(())
 }
@@ -49,7 +49,7 @@ fn append_number_to_file(n: i32) -> io::Result<()> {
     .append(true)
     .open("numbers.txt")?;
 
-  writeln!(file, "{}", n)?;
+  writeln!(file, "{n}")?;
 
   Ok(())
 }

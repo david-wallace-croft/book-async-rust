@@ -27,7 +27,7 @@ fn main() -> io::Result<()> {
 
   let duration: Duration = start.elapsed();
 
-  println!("Time elapsed in file operations is: {:?}", duration);
+  println!("Time elapsed in file operations is: {duration:?}");
 
   let start: Instant = Instant::now();
 
@@ -41,14 +41,14 @@ fn main() -> io::Result<()> {
     let coroutine_state: CoroutineState<_, ()> = pin.resume(());
 
     match coroutine_state {
-      CoroutineState::Yielded(number) => println!("{:?}", number),
+      CoroutineState::Yielded(number) => println!("{number:?}"),
       CoroutineState::Complete(()) => break,
     }
   }
 
   let duration: Duration = start.elapsed();
 
-  println!("Time elapsed in file operations is: {:?}", duration);
+  println!("Time elapsed in file operations is: {duration:?}");
 
   Ok(())
 }

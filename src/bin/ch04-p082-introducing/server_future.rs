@@ -42,7 +42,7 @@ impl Future for ServerFuture {
               break;
             },
             Err(e) => {
-              eprintln!("Error reading from stream: {}", e);
+              eprintln!("Error reading from stream: {e}");
 
               break;
             },

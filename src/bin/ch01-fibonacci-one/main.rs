@@ -10,5 +10,5 @@ fn main() {
 
   // Prints "fibonacci(50) in 95.5378462s"
 
-  println!("fibonacci(50) in {:?}", duration);
+  println!("fibonacci(50) in {duration:?}");
 }
