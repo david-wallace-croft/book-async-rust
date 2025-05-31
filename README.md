@@ -53,6 +53,7 @@
 - cargo run --bin ch05-p095-implementing
 - cargo run --bin ch05-p096-stacking
 - cargo run --bin ch05-p098-calling
+- cargo run --bin ch05-p100-mimicking
 
 ## History
 
