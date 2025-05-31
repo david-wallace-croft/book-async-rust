@@ -1,40 +1,26 @@
-#![feature(coroutines)]
 #![feature(coroutine_trait)]
+#![feature(coroutines)]
 
+use self::executor::Executor;
 use self::sleep_coroutine::SleepCoroutine;
-use ::std::{
-  collections::VecDeque,
-  ops::{Coroutine, CoroutineState},
-  pin::Pin,
-  time::{Duration, Instant},
-};
+use ::std::time::{Duration, Instant};
 
+mod executor;
 mod sleep_coroutine;
 
 fn main() {
-  let mut sleep_coroutines: VecDeque<SleepCoroutine> = VecDeque::new();
+  let mut executor: Executor = Default::default();
 
-  sleep_coroutines.push_back(SleepCoroutine::new(Duration::from_secs(1)));
+  for _ in 0..3 {
+    let coroutine: SleepCoroutine = SleepCoroutine::new(Duration::from_secs(1));
 
-  sleep_coroutines.push_back(SleepCoroutine::new(Duration::from_secs(1)));
-
-  sleep_coroutines.push_back(SleepCoroutine::new(Duration::from_secs(1)));
-
-  let mut counter = 0;
+    executor.add(Box::pin(coroutine));
+  }
 
   let start: Instant = Instant::now();
 
-  while counter < sleep_coroutines.len() {
-    let mut coroutine: SleepCoroutine = sleep_coroutines.pop_front().unwrap();
-
-    match Pin::new(&mut coroutine).resume(()) {
-      CoroutineState::Yielded(_) => {
-        sleep_coroutines.push_back(coroutine);
-      },
-      CoroutineState::Complete(_) => {
-        counter += 1;
-      },
-    }
+  while !executor.coroutines.is_empty() {
+    executor.poll();
   }
 
   println!("Took {:?}", start.elapsed());
