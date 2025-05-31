@@ -5,6 +5,9 @@ use self::rand_co_routine::RandCoRoutine;
 use std::{
   ops::{Coroutine, CoroutineState},
   pin::Pin,
+  sync::mpsc,
+  thread::{self, JoinHandle},
+  time::Duration,
 };
 
 mod nesting_future;
@@ -47,4 +50,34 @@ fn main() {
   }
 
   println!("Total: {total}");
+
+  coroutines_over_threads();
+}
+
+fn coroutines_over_threads() {
+  let (sender, receiver) = mpsc::channel::<RandCoRoutine>();
+
+  let _thread: JoinHandle<()> = thread::spawn(move || {
+    loop {
+      let mut coroutine = match receiver.recv() {
+        Ok(coroutine) => coroutine,
+        Err(_) => break,
+      };
+
+      match Pin::new(&mut coroutine).resume(()) {
+        CoroutineState::Complete(_) => panic!("Coroutine should not complete"),
+        CoroutineState::Yielded(result) => {
+          println!("Coroutine yielded: {result}");
+        },
+      }
+    }
+  });
+
+  thread::sleep(Duration::from_secs(1));
+
+  sender.send(RandCoRoutine::default()).unwrap();
+
+  sender.send(RandCoRoutine::default()).unwrap();
+
+  thread::sleep(Duration::from_secs(1));
 }
