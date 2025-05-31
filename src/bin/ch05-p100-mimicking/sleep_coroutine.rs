@@ -1,6 +1,7 @@
 use ::std::{
   ops::{Coroutine, CoroutineState},
   pin::Pin,
+  task::{Context, Poll},
   time::{Duration, Instant},
 };
 
@@ -31,6 +32,24 @@ impl Coroutine<()> for SleepCoroutine {
       CoroutineState::Complete(())
     } else {
       CoroutineState::Yielded(())
+    }
+  }
+}
+
+impl Future for SleepCoroutine {
+  type Output = ();
+
+  fn poll(
+    mut self: Pin<&mut Self>,
+    context: &mut Context<'_>,
+  ) -> Poll<Self::Output> {
+    match Pin::new(&mut self).resume(()) {
+      CoroutineState::Complete(_) => Poll::Ready(()),
+      CoroutineState::Yielded(_) => {
+        context.waker().wake_by_ref();
+
+        Poll::Pending
+      },
     }
   }
 }
