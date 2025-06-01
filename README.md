@@ -55,6 +55,7 @@
 - cargo run --bin ch05-p098-calling
 - cargo run --bin ch05-p100-mimicking
 - cargo run --bin ch05-p104-controlling
+- cargo test --bin ch05-p109-testing
 
 ## History
 
