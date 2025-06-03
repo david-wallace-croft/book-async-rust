@@ -58,12 +58,7 @@ fn coroutines_over_threads() {
   let (sender, receiver) = mpsc::channel::<RandCoRoutine>();
 
   let _thread: JoinHandle<()> = thread::spawn(move || {
-    loop {
-      let mut coroutine = match receiver.recv() {
-        Ok(coroutine) => coroutine,
-        Err(_) => break,
-      };
-
+    while let Ok(mut coroutine) = receiver.recv() {
       match Pin::new(&mut coroutine).resume(()) {
         CoroutineState::Complete(_) => panic!("Coroutine should not complete"),
         CoroutineState::Yielded(result) => {

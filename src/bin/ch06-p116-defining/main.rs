@@ -1,3 +1,5 @@
+#![expect(unused_imports)]
+
 use ::core::sync::atomic::Ordering;
 use ::std::{
   future::Future,
@@ -10,14 +12,10 @@ use ::std::{
   time::{Duration, Instant},
 };
 
-static DESIRED_TEMP: LazyLock<Arc<AtomicI16>> =
-  LazyLock::new(|| Arc::new(AtomicI16::new(2100)));
-
-static HEAT_ON: LazyLock<Arc<AtomicBool>> =
-  LazyLock::new(|| Arc::new(AtomicBool::new(false)));
-
-static TEMP: LazyLock<Arc<AtomicI16>> =
-  LazyLock::new(|| Arc::new(AtomicI16::new(2090)));
+mod display_future;
+mod statics;
+#[cfg(test)]
+mod tests;
 
 fn main() {
   todo!()

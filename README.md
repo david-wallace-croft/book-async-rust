@@ -57,6 +57,7 @@
 - cargo run --bin ch05-p100-mimicking
 - cargo run --bin ch05-p104-controlling
 - cargo test --bin ch05-p109-testing
+- cargo test --bin ch06-p116-defining
 - cargo run --bin ch06-p116-defining
 
 ## History
