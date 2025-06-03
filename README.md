@@ -12,6 +12,7 @@
 
 ## Usage
 
+- rustup default nightly
 - cargo run --bin ch01-fibonacci
 - cargo run --bin ch01-http-one
 - cargo run --bin ch01-http-four
@@ -56,6 +57,7 @@
 - cargo run --bin ch05-p100-mimicking
 - cargo run --bin ch05-p104-controlling
 - cargo test --bin ch05-p109-testing
+- cargo run --bin ch06-p116-defining
 
 ## History
 
