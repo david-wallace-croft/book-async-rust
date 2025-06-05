@@ -13,7 +13,9 @@ use ::std::{
 };
 
 mod display_future;
+mod heater_future;
 mod statics;
+
 #[cfg(test)]
 mod tests;
 
