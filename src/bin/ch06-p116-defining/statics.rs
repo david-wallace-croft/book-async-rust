@@ -1,14 +1,7 @@
-use ::core::sync::atomic::Ordering;
-use ::std::{
-  future::Future,
-  pin::Pin,
-  sync::{
-    Arc, LazyLock,
-    atomic::{AtomicBool, AtomicI16},
-  },
-  task::{Context, Poll},
-  time::{Duration, Instant},
-};
+use ::std::sync::Arc;
+use ::std::sync::LazyLock;
+use ::std::sync::atomic::AtomicBool;
+use ::std::sync::atomic::AtomicI16;
 
 pub static DESIRED_TEMP: LazyLock<Arc<AtomicI16>> =
   LazyLock::new(|| Arc::new(AtomicI16::new(2100)));
