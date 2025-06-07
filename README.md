@@ -60,6 +60,7 @@
 - cargo test --bin ch06-p116-defining
 - cargo run --bin ch06-p116-defining
 - cargo run --bin ch06-p124-getting
+- cargo run --bin ch06-p128-building
 
 ## History
 
