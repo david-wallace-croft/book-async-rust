@@ -59,6 +59,7 @@
 - cargo test --bin ch05-p109-testing
 - cargo test --bin ch06-p116-defining
 - cargo run --bin ch06-p116-defining
+- cargo run --bin ch06-p124-getting
 
 ## History
 
