@@ -5,9 +5,9 @@ use ::std::sync::{Arc, Mutex};
 use ::tokio::sync::{Mutex as AsyncMutex, MutexGuard};
 
 pub struct EventBus<T: Clone + Send> {
-  chamber: AsyncMutex<HashMap<u32, VecDeque<T>>>,
-  count: AtomicU32,
-  dead_ids: Mutex<Vec<u32>>,
+  pub chamber: AsyncMutex<HashMap<u32, VecDeque<T>>>,
+  pub count: AtomicU32,
+  pub dead_ids: Mutex<Vec<u32>>,
 }
 
 impl<T: Clone + Send> EventBus<T> {
