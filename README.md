@@ -61,6 +61,7 @@
 - cargo run --bin ch06-p116-defining
 - cargo run --bin ch06-p124-getting
 - cargo run --bin ch06-p128-building
+- cargo run --bin ch07-p137-building
 
 ## History
 
