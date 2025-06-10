@@ -62,6 +62,7 @@
 - cargo run --bin ch06-p124-getting
 - cargo run --bin ch06-p128-building
 - cargo run --bin ch07-p137-building
+- cargo run --bin ch07-p142-processing
 
 ## History
 
