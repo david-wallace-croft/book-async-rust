@@ -50,6 +50,6 @@ impl Future for HeaterFuture {
 
     context.waker().wake_by_ref();
 
-    return Poll::Pending;
+    Poll::Pending
   }
 }

@@ -5,7 +5,7 @@ use ::tokio::time;
 use ::tokio_util::task::LocalPoolHandle;
 
 thread_local! {
-  pub static COUNTER: RefCell<u32> = RefCell::new(1);
+  pub static COUNTER: RefCell<u32> = const { RefCell::new(1) };
 }
 
 #[tokio::main(flavor = "current_thread")]

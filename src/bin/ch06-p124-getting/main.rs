@@ -74,7 +74,7 @@ fn render(
     heat_on
   );
 
-  print!("Input: {}", input);
+  print!("Input: {input}");
 
   handle.flush().unwrap();
 }

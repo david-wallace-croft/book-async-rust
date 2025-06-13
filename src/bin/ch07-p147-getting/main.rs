@@ -30,10 +30,10 @@ async fn main() {
   }
 
   for i in futures {
-    let _ = i.await.unwrap();
+    i.await.unwrap();
   }
 
-  let _ = pool
+  pool
     .spawn_pinned(|| async { print_statement().await })
     .await
     .unwrap();
@@ -43,7 +43,7 @@ async fn print_statement() {
   COUNTER.with(|counter: &UnsafeCell<HashMap<u32, u32>>| {
     let counter: &mut HashMap<u32, u32> = unsafe { &mut *counter.get() };
 
-    println!("Counter: {:?}", counter);
+    println!("Counter: {counter:?}");
   });
 }
 

@@ -54,15 +54,13 @@ async fn consume_event_bus(event_bus: Arc<EventBus<f32>>) {
   loop {
     let event: Option<f32> = handle.poll().await;
 
-    match event {
-      Some(event) => {
-        println!("id: {} value: {}", handle.id, event);
-        if event == 3.0 {
-          break;
-        }
-      },
-      None => {},
-    }
+    if let Some(event) = event {
+      println!("id: {} value: {}", handle.id, event);
+
+      if event == 3.0 {
+        break;
+      }
+    };
   }
 }
 
