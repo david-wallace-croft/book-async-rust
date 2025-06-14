@@ -1,24 +1,22 @@
 use ::std::process;
-use ::std::{thread, time::Duration};
+use ::std::thread;
+use ::tokio::runtime::{Builder, Runtime};
 use ::tokio::signal;
 
 #[tokio::main]
 async fn main() {
-  tokio::spawn(cleanup());
+  thread::spawn(|| {
+    let runtime: Runtime =
+      Builder::new_multi_thread().enable_all().build().unwrap();
 
-  loop {
-    // Is this 100% CPU?
-  }
-}
-
-async fn cleanup() {
-  println!("cleanup background task started");
+    runtime.block_on(async {
+      println!("Hello, World!");
+    });
+  });
 
   let mut count: i32 = 0;
 
   loop {
-    thread::sleep(Duration::from_secs(5));
-
     signal::ctrl_c().await.unwrap();
 
     println!("ctrl-c received!");
