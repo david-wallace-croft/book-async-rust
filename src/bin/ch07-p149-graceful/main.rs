@@ -1,4 +1,5 @@
 use ::std::process;
+use ::std::{thread, time::Duration};
 use ::tokio::signal;
 
 #[tokio::main]
@@ -13,9 +14,11 @@ async fn main() {
 async fn cleanup() {
   println!("cleanup background task started");
 
-  let mut count = 0;
+  let mut count: i32 = 0;
 
   loop {
+    thread::sleep(Duration::from_secs(5));
+
     signal::ctrl_c().await.unwrap();
 
     println!("ctrl-c received!");
