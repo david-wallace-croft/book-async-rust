@@ -64,6 +64,7 @@
 - cargo run --bin ch07-p137-building
 - cargo run --bin ch07-p142-processing
 - cargo run --bin ch07-p147-getting
+- cargo run --bin ch07-p149-graceful
 
 ## History
 
