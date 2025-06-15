@@ -58,7 +58,7 @@ fn extract_data_from_thread() -> HashMap<u32, u32> {
     extracted_counter = counter.clone();
   });
 
-  return extracted_counter;
+  extracted_counter
 }
 
 async fn get_complete_count() -> HashMap<u32, u32> {
