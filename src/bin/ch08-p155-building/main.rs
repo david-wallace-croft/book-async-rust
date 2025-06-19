@@ -1,10 +1,6 @@
 use self::message::Message;
 use self::resp_message::RespMessage;
-use tokio::sync::{
-  mpsc::channel,
-  mpsc::{Receiver, Sender},
-  oneshot,
-};
+use tokio::sync::{mpsc::Receiver, mpsc::channel, oneshot};
 use tokio::task::JoinHandle;
 
 mod message;
@@ -23,6 +19,8 @@ async fn main() {
 
     tx.send(msg).await.unwrap();
   }
+
+  send_to_resp_actor().await
 }
 
 async fn basic_actor(mut rx: Receiver<Message>) {
@@ -46,5 +44,26 @@ async fn resp_actor(mut rx: Receiver<RespMessage>) {
     if msg.responder.send(state).is_err() {
       eprintln!("Failed to send response");
     }
+  }
+}
+
+async fn send_to_resp_actor() {
+  let (tx, rx) = channel::<RespMessage>(100);
+
+  let _resp_actor_handle = tokio::spawn(async {
+    resp_actor(rx).await;
+  });
+
+  for i in 0..10 {
+    let (resp_tx, resp_rx) = oneshot::channel::<i64>();
+
+    let msg = RespMessage {
+      value: i,
+      responder: resp_tx,
+    };
+
+    tx.send(msg).await.unwrap();
+
+    println!("Response: {}", resp_rx.await.unwrap());
   }
 }
