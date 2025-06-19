@@ -66,6 +66,7 @@
 - cargo run --bin ch07-p147-getting
 - cargo run --bin ch07-p149-graceful
 - cargo run --bin ch08-p155-building
+- cargo run --bin ch08-p157-working --release
 
 ## History
 

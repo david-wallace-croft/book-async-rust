@@ -50,14 +50,14 @@ async fn resp_actor(mut rx: Receiver<RespMessage>) {
 async fn send_to_resp_actor() {
   let (tx, rx) = channel::<RespMessage>(100);
 
-  let _resp_actor_handle = tokio::spawn(async {
+  let _resp_actor_handle: JoinHandle<()> = tokio::spawn(async {
     resp_actor(rx).await;
   });
 
   for i in 0..10 {
     let (resp_tx, resp_rx) = oneshot::channel::<i64>();
 
-    let msg = RespMessage {
+    let msg: RespMessage = RespMessage {
       value: i,
       responder: resp_tx,
     };
