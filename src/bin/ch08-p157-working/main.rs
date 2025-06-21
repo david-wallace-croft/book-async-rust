@@ -21,11 +21,15 @@ async fn actor_replacement(
   state: Arc<Mutex<usize>>,
   value: usize,
 ) -> usize {
-  let mut state: MutexGuard<'_, usize> = state.lock().await;
+  let update_handle: JoinHandle<usize> = tokio::spawn(async move {
+    let mut state: MutexGuard<'_, usize> = state.lock().await;
 
-  *state += value;
+    *state += value;
 
-  *state
+    *state
+  });
+
+  update_handle.await.unwrap()
 }
 
 async fn resp_actor(mut rx: Receiver<RespMessage>) {
@@ -73,7 +77,7 @@ async fn using_actor() {
     let _ = handle.await.unwrap();
   }
 
-  // Elapsed: 10.8188683s for ten million.
+  // Elapsed: 11.6121145s for ten million.
   println!("Elapsed: {:?}", now.elapsed());
 }
 
@@ -103,7 +107,7 @@ async fn using_mutex() {
     let _ = handle.await.unwrap();
   }
 
-  // Elapsed: 18.6598038s for ten million.
+  // Elapsed: 20.1622016s for ten million.
   // Takes disproportionately longer for one hundred million due to memory use.
   println!("Elapsed: {:?}", now.elapsed());
 }
