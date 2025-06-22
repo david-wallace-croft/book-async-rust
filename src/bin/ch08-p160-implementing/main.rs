@@ -1,3 +1,4 @@
+use ::std::collections::HashMap;
 use ::std::sync::OnceLock;
 use ::tokio::sync::{
   mpsc::channel,
@@ -33,12 +34,77 @@ enum RoutingMessage {
   KeyValue(KeyValueMessage),
 }
 
-fn main() {
-  todo!()
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
+  let (sender, receiver) = channel(32);
+
+  ROUTER_SENDER.set(sender).unwrap();
+
+  tokio::spawn(router(receiver));
+
+  let _ = set("hello".to_owned(), b"world".to_vec()).await?;
+
+  let value: Option<Vec<u8>> = get("hello".to_owned()).await?;
+
+  println!("value: {:?}", String::from_utf8(value.unwrap()));
+
+  let _ = delete("hello".to_owned()).await;
+
+  let value: Option<Vec<u8>> = get("hello".to_owned()).await?;
+
+  println!("value: {:?}", value);
+
+  Ok(())
+}
+
+async fn delete(key: String) -> Result<(), std::io::Error> {
+  let (tx, rx) = oneshot::channel();
+
+  let key_value_message: KeyValueMessage =
+    KeyValueMessage::Delete(DeleteKeyValueMessage {
+      key,
+      response: tx,
+    });
+
+  let routing_message: RoutingMessage =
+    RoutingMessage::KeyValue(key_value_message);
+
+  ROUTER_SENDER
+    .get()
+    .unwrap()
+    .send(routing_message)
+    .await
+    .unwrap();
+
+  rx.await.unwrap();
+
+  Ok(())
+}
+
+async fn get(key: String) -> Result<Option<Vec<u8>>, std::io::Error> {
+  let (tx, rx) = oneshot::channel();
+
+  let key_value_message: KeyValueMessage =
+    KeyValueMessage::Get(GetKeyValueMessage {
+      key,
+      response: tx,
+    });
+
+  let routing_message: RoutingMessage =
+    RoutingMessage::KeyValue(key_value_message);
+
+  ROUTER_SENDER
+    .get()
+    .unwrap()
+    .send(routing_message)
+    .await
+    .unwrap();
+
+  Ok(rx.await.unwrap())
 }
 
 async fn key_value_actor(mut receiver: Receiver<KeyValueMessage>) {
-  let mut map = std::collections::HashMap::new();
+  let mut map: HashMap<String, Vec<u8>> = HashMap::new();
 
   while let Some(message) = receiver.recv().await {
     match message {
@@ -87,4 +153,32 @@ async fn router(mut receiver: Receiver<RoutingMessage>) {
       },
     }
   }
+}
+
+async fn set(
+  key: String,
+  value: Vec<u8>,
+) -> Result<(), std::io::Error> {
+  let (tx, rx) = oneshot::channel();
+
+  let key_value_message: KeyValueMessage =
+    KeyValueMessage::Set(SetKeyValueMessage {
+      key,
+      value,
+      response: tx,
+    });
+
+  let routing_message: RoutingMessage =
+    RoutingMessage::KeyValue(key_value_message);
+
+  ROUTER_SENDER
+    .get()
+    .unwrap()
+    .send(routing_message)
+    .await
+    .unwrap();
+
+  rx.await.unwrap();
+
+  Ok(())
 }
