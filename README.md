@@ -67,6 +67,8 @@
 - cargo run --bin ch07-p149-graceful
 - cargo run --bin ch08-p155-building
 - cargo run --bin ch08-p157-working --release
+- cargo run --bin ch08-p160-implementing
+- rustup default stable
 
 ## History
 
