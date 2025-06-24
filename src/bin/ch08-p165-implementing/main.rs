@@ -32,7 +32,7 @@ async fn main() -> Result<(), std::io::Error> {
 
   tokio::spawn(router(receiver));
 
-  let _ = set("hello".to_owned(), b"world".to_vec()).await?;
+  set("hello".to_owned(), b"world".to_vec()).await?;
 
   let value: Option<Vec<u8>> = get("hello".to_owned()).await?;
 
@@ -42,9 +42,9 @@ async fn main() -> Result<(), std::io::Error> {
 
   let value: Option<Vec<u8>> = get("hello".to_owned()).await?;
 
-  println!("value: {:?}", value);
+  println!("value: {value:?}");
 
-  let _ = set("goodbye".to_owned(), b"friend".to_vec()).await?;
+  set("goodbye".to_owned(), b"friend".to_vec()).await?;
 
   let value: Option<Vec<u8>> = get("goodbye".to_owned()).await?;
 

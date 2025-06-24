@@ -74,7 +74,7 @@ async fn using_actor() {
   }
 
   for handle in handles {
-    let _ = handle.await.unwrap();
+    handle.await.unwrap();
   }
 
   // Elapsed: 11.6121145s for ten million.
@@ -104,7 +104,7 @@ async fn using_mutex() {
   }
 
   for handle in handles {
-    let _ = handle.await.unwrap();
+    handle.await.unwrap();
   }
 
   // Elapsed: 20.1622016s for ten million.

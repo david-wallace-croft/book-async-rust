@@ -71,6 +71,7 @@
 - cargo run --bin ch08-p165-implementing
 - echo "{}" > data.json
 - cargo run --bin ch08-p170-creating
+- cargo run --bin ch09-p179-building
 - rustup default stable
 
 ## History
