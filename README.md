@@ -72,6 +72,7 @@
 - echo "{}" > data.json
 - cargo run --bin ch08-p170-creating
 - cargo run --bin ch09-p179-building
+- cargo run --bin ch09-p185-waterfall
 - rustup default stable
 
 ## History
