@@ -78,6 +78,7 @@
 - cargo run --bin ch09-p188-future
 - cargo run --bin ch09-p190-state
 - cargo run --bin ch09-p193-retry
+- cargo run --bin ch09-p194-circuit
 - rustup default stable
 
 ## History
