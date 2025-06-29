@@ -3,6 +3,7 @@ use ::std::pin::Pin;
 use ::std::task::Context;
 use ::std::task::Poll;
 
+#[expect(dead_code)]
 pub struct StateFuture<F: Future, X: Future> {
   pub off_future: X,
   pub on_future: F,

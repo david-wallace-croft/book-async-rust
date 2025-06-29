@@ -11,7 +11,7 @@ pub struct EventBus<T: Clone + Send> {
 }
 
 impl<T: Clone + Send> EventBus<T> {
-  pub async fn subscribe(&self) -> EventHandle<T> {
+  pub async fn subscribe(&self) -> EventHandle<'_, T> {
     let mut chamber = self.chamber.lock().await;
 
     let id: u32 = self.count.fetch_add(1, Ordering::SeqCst);

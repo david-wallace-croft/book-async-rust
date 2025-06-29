@@ -8,6 +8,7 @@ use std::{
 
 pub struct CounterFuture {
   pub count: u32,
+  #[expect(dead_code)]
   pub order: FutureType,
 }
 

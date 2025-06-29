@@ -3,6 +3,7 @@ use std::{
   task::{Context, Poll},
 };
 
+#[expect(dead_code)]
 pub struct NestingFuture {
   pub inner: Pin<Box<dyn Future<Output = ()> + Send>>,
 }

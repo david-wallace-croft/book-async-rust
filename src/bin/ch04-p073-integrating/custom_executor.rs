@@ -1,5 +1,6 @@
 use crate::spawn_task;
 
+#[expect(dead_code)]
 pub struct CustomExecutor;
 
 impl<F: Future + Send + 'static> hyper::rt::Executor<F> for CustomExecutor {
