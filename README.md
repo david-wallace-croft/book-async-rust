@@ -77,6 +77,7 @@
 - cargo run --bin ch09-p186-decorator --features "logging_decorator"
 - cargo run --bin ch09-p188-future
 - cargo run --bin ch09-p190-state
+- cargo run --bin ch09-p193-retry
 - rustup default stable
 
 ## History
