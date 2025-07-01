@@ -4,7 +4,7 @@ use ::std::{
   sync::{Arc, Mutex},
 };
 
-#[expect(dead_code)]
+#[allow(dead_code)]
 pub struct MutexCoRoutine {
   pub handle: Arc<Mutex<u8>>,
   pub threshold: u8,

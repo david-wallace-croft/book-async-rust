@@ -79,6 +79,7 @@
 - cargo run --bin ch09-p190-state
 - cargo run --bin ch09-p193-retry
 - cargo run --bin ch09-p194-circuit
+- cargo test --test ch10-p197-setting
 - rustup default stable
 
 ## History
