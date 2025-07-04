@@ -81,6 +81,7 @@
 - cargo run --bin ch09-p194-circuit
 - cargo test --test ch10-p197-setting
 - cargo test --test ch10-p200-building
+- cargo run --bin ch10-p205-running
 - rustup default stable
 
 ## History
