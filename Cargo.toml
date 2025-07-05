@@ -39,3 +39,6 @@ logging_decorator = []
 
 [profile.dev]
 debug = "line-tables-only"
+
+[profile.release]
+opt-level = 'z'

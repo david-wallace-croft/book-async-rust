@@ -82,6 +82,8 @@
 - cargo test --test ch10-p197-setting
 - cargo test --test ch10-p200-building
 - cargo run --bin ch10-p205-running
+- cargo run --bin ch10-p211-accepting
+- Control-C
 - rustup default stable
 
 ## History
