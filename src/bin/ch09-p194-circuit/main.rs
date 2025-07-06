@@ -43,7 +43,7 @@ where
 {
   let open: bool = OPEN.load(Ordering::SeqCst);
 
-  if open == false {
+  if !open {
     return Ok(task::spawn(future));
   }
 

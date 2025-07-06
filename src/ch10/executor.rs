@@ -11,6 +11,7 @@ use ::std::{
   task::{Context, Poll, Waker},
 };
 
+#[derive(Default)]
 pub struct Executor {
   pub polling: VecDeque<Task>,
 }
@@ -18,12 +19,6 @@ pub struct Executor {
 impl Executor {
   pub fn create_waker(&self) -> Arc<Waker> {
     Arc::new(unsafe { Waker::from_raw(create_raw_waker()) })
-  }
-
-  pub fn new() -> Self {
-    Self {
-      polling: Default::default(),
-    }
   }
 
   pub fn poll(&mut self) {

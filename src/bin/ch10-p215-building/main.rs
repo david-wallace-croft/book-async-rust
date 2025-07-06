@@ -11,7 +11,7 @@ use std::{
 };
 
 fn main() -> io::Result<()> {
-  let mut executor: Executor = Executor::new();
+  let mut executor: Executor = Default::default();
 
   let mut handles: Vec<Receiver<Result<String, io::Error>>> = Vec::new();
 

@@ -19,7 +19,7 @@ static FLAGS: [AtomicBool; 3] = [
 macro_rules! spawn_worker {
   ($name:expr, $rx:expr, $flag:expr) => {
     thread::spawn(move || {
-      let mut executor = Executor::new();
+      let mut executor: Executor = Default::default();
 
       loop {
         if let Ok(stream) = $rx.try_recv() {
@@ -115,7 +115,7 @@ async fn handle_client(mut stream: TcpStream) -> std::io::Result<()> {
         buffer.extend_from_slice(&local_buf[..len]);
       },
       Err(ref e) if e.kind() == ErrorKind::WouldBlock => {
-        if buffer.len() > 0 {
+        if !buffer.is_empty() {
           break;
         }
 

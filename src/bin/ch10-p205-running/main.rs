@@ -12,7 +12,7 @@ fn main() {
     count: 0,
   };
 
-  let mut executor: Executor = Executor::new();
+  let mut executor: Executor = Default::default();
 
   let handle: Receiver<i32> = executor.spawn(counter);
 
