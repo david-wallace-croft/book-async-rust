@@ -86,6 +86,7 @@
   - cargo run --bin ch10-p211-accepting
   - cargo run --bin ch10-p215-building
 - cargo test --lib -- ch11_p219_performing --show-output
+- cargo test --lib -- ch11_p222_mocking --show-output
 - rustup default stable
 
 ## History
