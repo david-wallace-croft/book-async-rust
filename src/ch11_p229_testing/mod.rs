@@ -3,8 +3,8 @@ mod tests {
   use ::tokio::runtime::{Builder, Runtime};
   use ::tokio::sync::mpsc;
   use ::tokio::task::JoinHandle;
+  use ::tokio::time::error::Elapsed;
   use ::tokio::time::{Duration, timeout};
-  use tokio::time::error::Elapsed;
 
   #[test]
   fn test_channel_capacity() {
