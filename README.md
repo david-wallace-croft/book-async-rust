@@ -91,7 +91,7 @@
 - cargo test --lib -- ch11_p227_testing
 - cargo test --lib -- ch11_p229_testing --show-output
 - cargo test --lib -- ch11_p231_testing
-- cargo test --lib -- ch11_p233_fine_grained
+- cargo test --lib -- ch11_p233_fine_grained --show-output
 - rustup default stable
 
 ## History

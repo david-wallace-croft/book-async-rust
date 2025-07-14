@@ -3,12 +3,19 @@ use ::tokio::sync::{Mutex, MutexGuard};
 use ::tokio::time::{self, Duration};
 
 #[allow(dead_code)]
-async fn async_mutex_locker(mutex: Arc<Mutex<i32>>) {
+async fn async_mutex_locker(
+  mutex: Arc<Mutex<i32>>,
+  id: usize,
+) {
   let mut lock: MutexGuard<'_, i32> = mutex.lock().await;
+
+  println!("before increment for task {id}");
 
   *lock += 1;
 
   time::sleep(Duration::from_millis(1)).await;
+
+  println!("after sleep for task {id}");
 }
 
 #[cfg(test)]
@@ -26,9 +33,9 @@ mod tests {
 
     let mutex_clone2: Arc<Mutex<i32>> = mutex.clone();
 
-    let mut future1 = task::spawn(async_mutex_locker(mutex_clone1));
+    let mut future1 = task::spawn(async_mutex_locker(mutex_clone1, 1));
 
-    let mut future2 = task::spawn(async_mutex_locker(mutex_clone2));
+    let mut future2 = task::spawn(async_mutex_locker(mutex_clone2, 2));
 
     tokio_test::assert_pending!(future1.poll());
 
@@ -46,11 +53,16 @@ mod tests {
 
     tokio_test::assert_pending!(future2.poll());
 
+    println!("before drop of future1");
+
+    // TODO: Why does this unit test still pass if I remark out the drop line?
     drop(future1);
 
     time::sleep(Duration::from_millis(1)).await;
 
     assert_eq!(future2.poll(), Poll::Ready(()));
+
+    println!("before final and third lock");
 
     let lock: MutexGuard<'_, i32> = mutex.lock().await;
 
